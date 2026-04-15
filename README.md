@@ -15,4 +15,3 @@ Next.js, TypeScript, Tailwind CSS, PostgreSQL, Prisma, Clerk/Auth.js
 
 # Goal
 The goal of LearnDSA is to make data structure learning more effective, more interactive, and more retention-focused than a typical tutorial website.
->>>>>>> 45ec84a673c031ee7979ca02381053794fa8ba66
