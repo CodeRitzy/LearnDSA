@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 export default async function TopicDetailPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+
   const topic = await prisma.topic.findUnique({
-    where: { slug: params.slug },
+    where: { slug },
   });
 
   if (!topic) {
