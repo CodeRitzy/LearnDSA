@@ -11,12 +11,7 @@ LearnDSA is a full-stack educational platform designed to help users master data
 - Systems-oriented explanations and tradeoffs
 
 # Built with
-Next.js
-TypeScript
-Tailwind CSS
-PostgreSQL
-Prisma
-Clerk/Auth.js
+Next.js, TypeScript, Tailwind CSS, PostgreSQL, Prisma, Clerk/Auth.js
 
 # Goal
 The goal of LearnDSA is to make data structure learning more effective, more interactive, and more retention-focused than a typical tutorial website.
