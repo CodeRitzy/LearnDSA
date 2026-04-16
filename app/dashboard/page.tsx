@@ -1,30 +1,37 @@
-import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+import Link from "next/link";
+import ProgressOverview from "@/components/dashboard/ProgressOverview";
+import { problems, topics } from "@/lib/data";
+import { getCompletedCount } from "@/lib/progress";
 
-export default async function DashboardPage() {
-  const { userId } = await auth();
-
-  if (!userId) {
-    redirect("/sign-in");
-  }
+export default function DashboardPage() {
+  const completed = getCompletedCount();
+  const total = problems.length;
 
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold">Dashboard</h1>
-      <p className="mt-3">You are signed in to LearnDSA.</p>
-
-      <div className="mt-6 rounded-lg border p-4">
-        <h2 className="text-xl font-semibold">Welcome back</h2>
-        <p className="mt-2 text-sm text-gray-600">
-          This is your protected dashboard. Later, this page can show:
+    <main className="mx-auto max-w-5xl px-6 py-10">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <p className="mt-2 text-gray-600">
+          Track your progress and continue learning.
         </p>
+      </div>
 
-        <ul className="mt-4 list-disc space-y-2 pl-6 text-sm">
-          <li>topics you have started</li>
-          <li>reviews due today</li>
-          <li>progress and mastery</li>
-          <li>recommended next topic</li>
-        </ul>
+      <div className="grid gap-6 md:grid-cols-2">
+        <ProgressOverview completed={completed} total={total} />
+
+        <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h2 className="text-lg font-semibold text-gray-900">Topics Available</h2>
+          <p className="mt-2 text-sm text-gray-600">
+            You currently have {topics.length} topics ready to study.
+          </p>
+
+          <Link
+            href="/topics"
+            className="mt-4 inline-block text-sm font-medium text-blue-600 hover:underline"
+          >
+            Browse topics
+          </Link>
+        </div>
       </div>
     </main>
   );
