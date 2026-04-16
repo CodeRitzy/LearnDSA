@@ -29,21 +29,15 @@ export default async function TopicDetailPage({
         <p className="mt-2 text-gray-600">{topic.description}</p>
       </div>
 
-      {topicProblems.length === 0 ? (
-        <p className="text-sm text-red-600">
-          No problems found for this topic.
-        </p>
-      ) : (
-        <div className="space-y-4">
-          {topicProblems.map((problem) => (
-            <ProblemCard
-              key={problem.id}
-              problem={problem}
-              completed={isProblemComplete(problem.id)}
-            />
-          ))}
-        </div>
-      )}
+      <div className="space-y-4">
+        {topicProblems.map((problem) => (
+          <ProblemCard
+            key={problem.id}
+            problem={problem}
+            completed={isProblemComplete(problem.id)}
+          />
+        ))}
+      </div>
     </main>
   );
 }
